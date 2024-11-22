@@ -7,18 +7,9 @@ const hostname = window.location.hostname;
 
 export const commands: Record<string, (args: string[]) => Promise<string> | string> = {
   help: () => 'Available commands: ' + Object.keys(commands).join(', '),
-  hostname: () => hostname,
-  whoami: () => 'guest',
-  date: () => new Date().toLocaleString(),
-  vi: () => `why use vi? try 'emacs'`,
-  vim: () => `why use vim? try 'emacs'`,
-  emacs: () => `why use emacs? try 'vim'`,
+  whoami: () => '>> Name: Duong Quang Hao\n>> University: Hoc vien Cong nghe Buu Chinh Vien thong\n>> Major: Information Security',
   echo: (args: string[]) => args.join(' '),
-  sudo: (args: string[]) => {
-    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-
-    return `Permission denied: unable to run the command '${args[0]}' as root.`;
-  },
+  contact: () => `>> Facebook: facebook.com/haonika\n>> Github: github.com/DuongHaoNika\n>> Email: quanghao.work@gmail.com`,
   theme: (args: string[]) => {
     const usage = `Usage: theme [args].
     [args]:
@@ -63,25 +54,15 @@ export const commands: Record<string, (args: string[]) => Promise<string> | stri
       }
     }
   },
-  repo: () => {
-    window.open(packageJson.repository.url, '_blank');
-
-    return 'Opening repository...';
-  },
   clear: () => {
     history.set([]);
 
     return '';
   },
   email: () => {
-    window.open(`mailto:${packageJson.author.email}`);
+    window.open(`mailto:quanghao.work@gmail.com`);
 
-    return `Opening mailto:${packageJson.author.email}...`;
-  },
-  donate: () => {
-    window.open(packageJson.funding.url, '_blank');
-
-    return 'Opening donation url...';
+    return `Opening mailto:quanghao.work@gmail.com...`;
   },
   weather: async (args: string[]) => {
     const city = args.join('+');
@@ -97,30 +78,17 @@ export const commands: Record<string, (args: string[]) => Promise<string> | stri
   exit: () => {
     return 'Please close the tab to exit.';
   },
-  curl: async (args: string[]) => {
-    if (args.length === 0) {
-      return 'curl: no URL provided';
-    }
-
-    const url = args[0];
-
-    try {
-      const response = await fetch(url);
-      const data = await response.text();
-
-      return data;
-    } catch (error) {
-      return `curl: could not fetch URL ${url}. Details: ${error}`;
-    }
-  },
+  
   banner: () => `
-███╗   ███╗██╗  ██╗████████╗████████╗███████╗██████╗
-████╗ ████║██║  ██║╚══██╔══╝╚══██╔══╝╚════██║╚════██╗
-██╔████╔██║███████║   ██║      ██║       ██╔╝ █████╔╝
-██║╚██╔╝██║╚════██║   ██║      ██║      ██╔╝ ██╔═══╝
-██║ ╚═╝ ██║     ██║   ██║      ██║      ██║  ███████╗
-╚═╝     ╚═╝     ╚═╝   ╚═╝      ╚═╝      ╚═╝  ╚══════╝ v${packageJson.version}
-
+██╗  ██╗ █████╗  ██████╗ ███╗   ██╗██╗██╗  ██╗ █████╗ 
+██║  ██║██╔══██╗██╔═══██╗████╗  ██║██║██║ ██╔╝██╔══██╗
+███████║███████║██║   ██║██╔██╗ ██║██║█████╔╝ ███████║
+██╔══██║██╔══██║██║   ██║██║╚██╗██║██║██╔═██╗ ██╔══██║
+██║  ██║██║  ██║╚██████╔╝██║ ╚████║██║██║  ██╗██║  ██║
+╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ v1.0.0
+>> About me: whoami
+>> Contact: contact
+>> Clear: clear
 Type 'help' to see list of available commands.
 `,
 };
