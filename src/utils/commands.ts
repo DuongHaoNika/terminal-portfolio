@@ -7,7 +7,7 @@ const hostname = window.location.hostname;
 
 export const commands: Record<string, (args: string[]) => Promise<string> | string> = {
   help: () => 'Available commands: ' + Object.keys(commands).join(', '),
-  whoami: () => '>> Name: Duong Quang Hao\n>> University: Hoc vien Cong nghe Buu Chinh Vien thong\n>> Major: Information Security',
+  whoami: () => '>> Name: Duong Quang Hao\n>> University: Posts and Telecommunications Institute of Technology\n>> Major: Information Security\n>> Blog: blog.haonika.id.vn\n>> CV: cv.haonika.id.vn',
   echo: (args: string[]) => args.join(' '),
   contact: () => `>> Facebook: facebook.com/haonika\n>> Github: github.com/DuongHaoNika\n>> Email: quanghao.work@gmail.com`,
   theme: (args: string[]) => {
